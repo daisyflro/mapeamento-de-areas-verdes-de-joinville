@@ -1,5 +1,7 @@
 package models;
 
+import repositories.LocalizacaoRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +11,11 @@ public class AreaVerde {
     private Localizacao localizacao;
     private String tipoVegetacao;
     private String horarioFuncionamento;
-    private String atividadesDisponiveis;
+    private List<String> atividadesDisponiveis;
     private List<Avaliacao> listaAvaliacoes;
 
-    public AreaVerde(int id, String nome, Localizacao localizacao, String tipoVegetacao, String horarioFuncionamento, String atividadesDisponiveis) {
-        this.id = id;
+    public AreaVerde(String nome, String tipoVegetacao, String horarioFuncionamento, List<String> atividadesDisponiveis) {
         this.nome = nome;
-        this.localizacao = localizacao;
         this.tipoVegetacao = tipoVegetacao;
         this.horarioFuncionamento = horarioFuncionamento;
         this.atividadesDisponiveis = atividadesDisponiveis;
@@ -39,7 +39,8 @@ public class AreaVerde {
     }
 
     public Localizacao getLocalizacao() {
-        return localizacao;
+        LocalizacaoRepository localizacao = new LocalizacaoRepository();
+        return localizacao.buscarByAreaVerde(id);
     }
 
     public void setLocalizacao(Localizacao localizacao) {
@@ -62,12 +63,16 @@ public class AreaVerde {
         this.horarioFuncionamento = horarioFuncionamento;
     }
 
-    public String getAtividadesDisponiveis() {
+    public List<String> getAtividadesDisponiveis() {
         return atividadesDisponiveis;
     }
 
-    public void setAtividadesDisponiveis(String atividadesDisponiveis) {
+    public void setAtividadesDisponiveis(List<String> atividadesDisponiveis) {
         this.atividadesDisponiveis = atividadesDisponiveis;
+    }
+
+    public void setListaAvaliacoes(List<Avaliacao> listaAvaliacoes) {
+        this.listaAvaliacoes = listaAvaliacoes;
     }
 
     public List<Avaliacao> getListaAvaliacoes() {
@@ -93,18 +98,18 @@ public class AreaVerde {
                 "\nID: " + id +
                 "\nNome: " + nome +
                 "\nHorário de Funcionamento: " + horarioFuncionamento +
-                "\nLocalização: " + localizacao.toString() +
+                "\nLocalização: " + getLocalizacao().toString() +
                 "\nTipo de vegetação: " + tipoVegetacao +
-                "\nAtividades Disponíveis: " + atividadesDisponiveis +
+                "\nAtividades Disponíveis: " + String.join(", ", atividadesDisponiveis) +
                 "\nAvaliação: " + calcularMedia();
     }
 
-    //listagem: nome, tipo de arbusto e média
     @Override
     public String toString() {
-        return "Informações: " +
+        return "Área Verde - ID: " + id +
                 "\nNome: " + nome +
                 "\nTipo de vegetação: " + tipoVegetacao +
-                "\nAvaliação: " + calcularMedia();
+                "\nAvaliação: " + calcularMedia() +
+                "\n";
     }
 }

@@ -9,8 +9,7 @@ public class Avaliacao {
     private int  notaColetaResiduos;
     private int  notaTransportePublico;
 
-    public Avaliacao(int id, int idAreaVerde, int notaQuantidadeArvores, int notaQualidadeAr, int notaPoluicaoSonora, int notaColetaResiduos, int notaTransportePublico) {
-        this.id = id;
+    public Avaliacao( int idAreaVerde, int notaQuantidadeArvores, int notaQualidadeAr, int notaPoluicaoSonora, int notaColetaResiduos, int notaTransportePublico) {
         this.idAreaVerde = idAreaVerde;
         this.notaQuantidadeArvores = notaQuantidadeArvores;
         this.notaQualidadeAr = notaQualidadeAr;

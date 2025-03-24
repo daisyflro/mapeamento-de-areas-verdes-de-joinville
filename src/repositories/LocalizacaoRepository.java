@@ -21,4 +21,13 @@ public class LocalizacaoRepository {
         
         return null;
     }
+    public Localizacao buscarByAreaVerde(int idAreaVerde){
+        for(Localizacao localizacao : LOCALIZACOES){
+            if(idAreaVerde ==  localizacao.getIdAreaVerde()){
+                return localizacao;
+            }
+        }
+
+        return null;
+    }
 }

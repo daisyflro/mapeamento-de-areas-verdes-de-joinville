@@ -7,8 +7,7 @@ public class Localizacao {
     double latitude;
     double longitude;
 
-    public Localizacao(int id, int idAreaVerde, double latitude, double longitude) {
-        this.id = id;
+    public Localizacao(int idAreaVerde, double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.idAreaVerde = idAreaVerde;
@@ -36,6 +35,14 @@ public class Localizacao {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public int getIdAreaVerde() {
+        return idAreaVerde;
+    }
+
+    public void setIdAreaVerde(int idAreaVerde) {
+        this.idAreaVerde = idAreaVerde;
     }
 
     @Override

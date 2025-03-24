@@ -9,9 +9,11 @@ public class AvaliacaoRepository {
 
     private static ArrayList<Avaliacao> AVALIACOES = new ArrayList<>();
 
-    public void salvar(Avaliacao novaAvaliacao, AreaVerde areaVerde) {
+    public void salvar(Avaliacao novaAvaliacao) {
         novaAvaliacao.setId(AVALIACOES.size()+1);
         AVALIACOES.add(novaAvaliacao);
+        AreaVerdeRepository areaVerdeRepository = new AreaVerdeRepository();
+        AreaVerde areaVerde = areaVerdeRepository.buscar(novaAvaliacao.getIdAreaVerde());
         areaVerde.adicionarAvaliacao(novaAvaliacao);
     }
 
